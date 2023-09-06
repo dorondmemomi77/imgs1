@@ -1,0 +1,39 @@
+    Public Function get_polinom_size1(polynom_results_arr1 As ArrayList, Optional max_polynom_index1 As Integer = -1)
+
+
+
+
+        Dim i1 As Integer
+
+        If max_polynom_index1 = -1 Then
+            max_polynom_index1 = polynom_results_arr1.Count - 1
+        End If
+        Dim total_height1 As Double = 0
+        Dim total_width1 As Double = 0
+        For i1 = 0 To max_polynom_index1
+            Dim polynom_obj1 As CPolynom2 = New CPolynom2()
+            polynom_obj1 = polynom_results_arr1(i1)("polynom_obj1")
+            total_height1 += (Math.Abs(polynom_obj1.get_y_val1(Double.Parse(polynom_results_arr1(i1)("start_x_val1")))) - Math.Abs(polynom_obj1.get_y_val1(Double.Parse(polynom_results_arr1(i1)("end_x_val1")))))
+            total_width1 += (Math.Abs(Double.Parse(polynom_results_arr1(i1)("start_x_val1"))) - Math.Abs(Double.Parse(polynom_results_arr1(i1)("end_x_val1"))))
+        Next
+
+        Dim dict_res1 As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
+
+        dict_res1("total_height1") = total_height1
+        dict_res1("total_width1") = total_width1
+
+
+        Return dict_res1
+    End Function
+
+
+//----
+
+
+Dim total_org_height1 As Integer = Integer.Parse(Me.curve_pxls_arr1(0).ToString().Split(",")(1).ToString()) - Integer.Parse(Me.curve_pxls_arr1(Me.curve_pxls_arr1.Count - 1).ToString().Split(",")(1).ToString())
+                    Dim total_org_width1 As Integer = Integer.Parse(Me.curve_pxls_arr1(0).ToString().Split(",")(0).ToString()) - Integer.Parse(Me.curve_pxls_arr1(Me.curve_pxls_arr1.Count - 1).ToString().Split(",")(0).ToString())
+
+                    If Math.Abs(total_org_height1 - dict_res_size1d("total_height1") + polynom_result_arr1(polynom_result_arr1.Count - 1)("min_diff_h1")) > Math.Pow(10, -7) Or
+                        Math.Abs(dict_res_size1d("total_width1") - total_org_width1) > Math.Pow(10, -7) Then
+                        Dim err4 As Integer = 1
+                    End If
